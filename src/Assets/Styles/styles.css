@@ -1,0 +1,392 @@
+body {
+  height: 100%;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+}
+
+#page-container {
+  position: relative;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+#side-bar {
+  background: #d0d0d091;
+  width: 35%;
+  height: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  position: fixed;
+}
+
+/* #side-bar.hidden {
+    background: #ff777791;
+    width: 10%;
+    height: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    padding: 5% 0.5%;
+} */
+
+#projects-holder {
+  height: auto;
+  width: 65%;
+  display: flex;
+  align-items: center;
+  flex-flow: column wrap;
+  margin-left: 35%;
+  overflow: auto;
+  justify-content: space-evenly;
+}
+#hide-btn {
+  margin-top: 12%;
+  height: 3em;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#projects {
+  margin-top: 12%;
+  width: 65%;
+}
+
+#projects.closed {
+  height: 3em;
+  overflow: hidden;
+}
+
+#projects-heading {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  transition: 1.1s;
+}
+.projects-entry {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  overflow: hidden;
+  justify-content: end;
+  transition: 1.1s;
+}
+
+#hide-btn-icon {
+  background: url("../Images/sidebar-icon.png");
+  background-size: cover;
+  height: 3em;
+  width: 3em;
+  cursor: pointer;
+}
+
+.open-icon {
+  background: url("../Images/projects-open-icon.png");
+  background-size: cover;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  margin-left: 0;
+  flex-shrink: 0;
+}
+
+.close-icon {
+  background: url("../Images/projects-close-icon.png");
+  background-size: cover;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  margin-left: 0;
+  flex-shrink: 0;
+}
+
+.add-icon {
+  background: url("../Images/projects-add-icon.png");
+  background-size: cover;
+  height: 2em;
+  width: 2em;
+  cursor: pointer;
+  margin-left: auto;
+}
+.add-icon:hover {
+  transform: scale(1.1);
+  transition: 0.1s;
+}
+
+#hide-btn-text {
+  margin-left: 3%;
+  font-size: 250%;
+}
+
+#hide-btn-text.hidden {
+  font-size: 0%;
+}
+
+.side-bar-entry {
+  margin-left: 5%;
+  font-size: 150%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  justify-content: center;
+  align-items: center;
+}
+
+#project-input-form {
+  width: 32%;
+  text-align: center;
+  background-color: #ddd8d8;
+  font-size: 125%;
+  border-radius: 10px;
+  border: solid black;
+}
+
+#task-input-form {
+  width: 32%;
+  text-align: center;
+  background-color: #ddd8d8;
+  font-size: 125%;
+  border-radius: 10px;
+  border: solid black;
+}
+
+/* #close-btn {
+    float: right;
+    margin-top: 3%;
+    background: unset !important;
+    font-size: 100%;
+    color: #000000a8;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+} */
+
+#add-project-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+#add-project-button-cancel {
+  width: 50%;
+  padding: 1% 1% 1% 1%;
+  border-bottom-left-radius: 6px;
+  background: #fff;
+  color: #000;
+  border: none;
+  border-right: solid #ddd8d8a6;
+}
+
+#add-project-button-create {
+  width: 50%;
+  padding: 1% 1% 1% 1%;
+  border-bottom-right-radius: 6px;
+  background: #fff;
+  color: #000;
+  border: none;
+}
+
+.project {
+  margin-top: 5%;
+  width: 60%;
+  height: 90%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: inherit;
+}
+
+.project-heading {
+  color: white;
+  font-size: 150%;
+  width: 150%;
+  padding: 5% 0 5% 0;
+  background: gray;
+  margin-bottom: 5%;
+  border-radius: 12px;
+  border: solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.project-title {
+  margin-left: auto;
+}
+
+.task-holder {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.task {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  border: solid black;
+  background: gray;
+  margin-bottom: 5%;
+  justify-content: center;
+}
+
+.task-edit-btn {
+  background-image: url("../Images/task-edit.png");
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+  margin-right: 2%;
+  cursor: pointer;
+}
+.task-edit-btn:hover {
+  transform: scale(1.1);
+  transition: 0.1s;
+}
+
+.task-delete-btn {
+  background-image: url("../Images/task-delete.png");
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.task-delete-btn:hover {
+  transform: scale(1.1);
+  transition: 0.1s;
+}
+
+.project-heading-add-icon {
+  background: url("../Images/projects-add-icon.png");
+  background-size: cover;
+  height: 2em;
+  width: 2em;
+  cursor: pointer;
+  margin-left: auto;
+}
+.project-heading-add-icon:hover {
+  transform: scale(1.1);
+  transition: 0.1s;
+}
+
+#add-task-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+#add-task-button-cancel {
+  width: 50%;
+  padding: 1% 1% 1% 1%;
+  border-bottom-left-radius: 6px;
+  background: #fff;
+  color: #000;
+  border: none;
+  border-right: solid #ddd8d8a6;
+}
+
+#add-task-button-create {
+  width: 50%;
+  padding: 1% 1% 1% 1%;
+  border-bottom-right-radius: 6px;
+  background: #fff;
+  color: #000;
+  border: none;
+}
+
+.task-description {
+  width: 100%;
+  text-align: center;
+  padding: 4% 0;
+}
+
+.task-buttons {
+  display: flex;
+  margin-left: auto;
+}
+
+.task-upper-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.task-checkbox {
+  margin-right: auto;
+  margin-left: 9%;
+}
+
+.task-title {
+  text-align: center;
+}
+
+.task-priority-bar {
+  background: red;
+  height: 3px;
+  width: 100%;
+  margin: 0;
+}
+
+.projects-sidebar-heading {
+  width: 100%;
+  display: flex;
+  margin-bottom: 2%;
+}
+
+.task-sidebar-heading {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task-sidebar-icon {
+  height: 20px;
+  width: 20px;
+  margin-right: auto;
+  flex-shrink: 0;
+  background: red;
+  border-radius: 20px;
+}
+
+.task-entry {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  overflow: hidden;
+  width: 85%;
+  margin-bottom: 2%;
+}
+
+.side-bar-entry-task {
+  margin-left: 5%;
+  font-size: 100%;
+  overflow: hidden;
+  width: inherit;
+}
+
+.projects-entry.closed {
+  height: 2em;
+}
